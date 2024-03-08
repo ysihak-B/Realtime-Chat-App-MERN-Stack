@@ -1,6 +1,7 @@
 import express from 'express'
 import { config } from 'dotenv'
 import authRoutes from './Routes/auth.routes.js'
+import messageRoutes from './routes/message.routes.js'
 import connectToMongoDB from './db/connectToMongoDB.js'
 
 config()
@@ -10,6 +11,7 @@ app.use(express.json()) // to parse the incoming request with json payloads ( fr
 
 app.get('/', (req, res) => res.send('Wellcome to Realtime-Chat-App API!'))
 app.use('/api/auth', authRoutes)
+app.use('/api/message', messageRoutes)
 
 app.listen(PORT, () => {
     connectToMongoDB();
